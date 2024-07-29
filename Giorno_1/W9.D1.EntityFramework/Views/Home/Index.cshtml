@@ -1,0 +1,19 @@
+﻿@using W9.D1.EntityFramework.DataModel
+@model IEnumerable<Author>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Autori nel Database</h1>
+</div>
+<a asp-action="Create" class="btn btn-info">Nuovo Autore</a>
+<ul>
+    @foreach (var author in Model) {
+        <li>
+            @author.FirstName @author.LastName @author.Email
+            <a asp-action="Edit" asp-route-id="@author.Id" class="btn btn-warning">Modifica</a>
+            <a asp-action="Delete" asp-route-id="@author.Id" class="btn btn-danger">Elimina</a>
+        </li>
+    }
+</ul>
