@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using W9_ProgettoSettimanale.Context;
+
 namespace W9_ProgettoSettimanale
 {
     public class Program
@@ -8,6 +11,8 @@ namespace W9_ProgettoSettimanale
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            var conn = builder.Configuration.GetConnectionString("AuthDb");
+            builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlServer(conn));
 
             var app = builder.Build();
 

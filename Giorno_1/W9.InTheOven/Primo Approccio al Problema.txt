@@ -1,4 +1,4 @@
-﻿Prodotto
+﻿﻿Prodotto
 	nome, foto, prezzo, tempo, ingredienti
 	
 	Ingrediente (molti a molti con prodotti)
