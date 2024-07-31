@@ -5,8 +5,8 @@ namespace W9_ProgettoSettimanale.Context
 {
     public class DataContext : DbContext
     {
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Ingredient> Ingredients { get; set; }
+        public virtual DbSet<Products> Products { get; set; }
+        public virtual DbSet<Ingredients> Ingredients { get; set; }
 
         public virtual DbSet<Orders> Orders { get; set; }
 

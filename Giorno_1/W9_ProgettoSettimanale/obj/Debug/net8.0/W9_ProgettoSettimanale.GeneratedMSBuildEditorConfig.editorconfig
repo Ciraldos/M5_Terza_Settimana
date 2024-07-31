@@ -1,11 +1,19 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = W9_ProgettoSettimanale
 build_property.RootNamespace = W9_ProgettoSettimanale
@@ -17,6 +25,14 @@ build_property.SupportLocalizedComponentNames =
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
 build_property.MSBuildProjectDirectory = C:\Users\andre\Desktop\Epicode1\M5\M5_Terza_Settimana\Giorno_1\W9_ProgettoSettimanale
 build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Admin/CreateProdotto.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlUHJvZG90dG8uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Admin/GetProdotti.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cR2V0UHJvZG90dGkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=

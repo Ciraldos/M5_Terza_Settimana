@@ -22,7 +22,7 @@ namespace W9_ProgettoSettimanale.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("IngredientProduct", b =>
+            modelBuilder.Entity("IngredientsProducts", b =>
                 {
                     b.Property<int>("IngredientsId")
                         .HasColumnType("int");
@@ -34,7 +34,7 @@ namespace W9_ProgettoSettimanale.Migrations
 
                     b.HasIndex("ProductsId");
 
-                    b.ToTable("IngredientProduct");
+                    b.ToTable("IngredientsProducts");
                 });
 
             modelBuilder.Entity("RolesUsers", b =>
@@ -52,7 +52,7 @@ namespace W9_ProgettoSettimanale.Migrations
                     b.ToTable("RolesUsers");
                 });
 
-            modelBuilder.Entity("W9_ProgettoSettimanale.Models.Ingredient", b =>
+            modelBuilder.Entity("W9_ProgettoSettimanale.Models.Ingredients", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -132,7 +132,7 @@ namespace W9_ProgettoSettimanale.Migrations
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("W9_ProgettoSettimanale.Models.Product", b =>
+            modelBuilder.Entity("W9_ProgettoSettimanale.Models.Products", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,8 +154,7 @@ namespace W9_ProgettoSettimanale.Migrations
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(2)
-                        .HasColumnType("decimal(2,2)");
+                        .HasColumnType("decimal(18, 2)");
 
                     b.HasKey("Id");
 
@@ -210,15 +209,15 @@ namespace W9_ProgettoSettimanale.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("IngredientProduct", b =>
+            modelBuilder.Entity("IngredientsProducts", b =>
                 {
-                    b.HasOne("W9_ProgettoSettimanale.Models.Ingredient", null)
+                    b.HasOne("W9_ProgettoSettimanale.Models.Ingredients", null)
                         .WithMany()
                         .HasForeignKey("IngredientsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("W9_ProgettoSettimanale.Models.Product", null)
+                    b.HasOne("W9_ProgettoSettimanale.Models.Products", null)
                         .WithMany()
                         .HasForeignKey("ProductsId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -248,7 +247,7 @@ namespace W9_ProgettoSettimanale.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("W9_ProgettoSettimanale.Models.Product", "Product")
+                    b.HasOne("W9_ProgettoSettimanale.Models.Products", "Product")
                         .WithMany("OrderedProduct")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -275,7 +274,7 @@ namespace W9_ProgettoSettimanale.Migrations
                     b.Navigation("OrderedProducts");
                 });
 
-            modelBuilder.Entity("W9_ProgettoSettimanale.Models.Product", b =>
+            modelBuilder.Entity("W9_ProgettoSettimanale.Models.Products", b =>
                 {
                     b.Navigation("OrderedProduct");
                 });
