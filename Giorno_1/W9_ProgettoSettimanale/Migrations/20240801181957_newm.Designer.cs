@@ -12,8 +12,8 @@ using W9_ProgettoSettimanale.Context;
 namespace W9_ProgettoSettimanale.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240731234538_new")]
-    partial class @new
+    [Migration("20240801181957_newm")]
+    partial class newm
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,6 +116,9 @@ namespace W9_ProgettoSettimanale.Migrations
                         .HasColumnType("nvarchar(80)");
 
                     b.Property<bool>("Done")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<string>("Notes")

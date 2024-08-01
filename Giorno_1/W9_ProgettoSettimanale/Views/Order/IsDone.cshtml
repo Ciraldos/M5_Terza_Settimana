@@ -1,0 +1,75 @@
+﻿@model IEnumerable<W9_ProgettoSettimanale.Models.Orders>
+
+@{
+    ViewData["Title"] = "IsDone";
+}
+
+<h1>IsDone</h1>
+<button id="CountBtn" class="btn btn-primary">Tot. Evasi</button>
+<div id="num"></div>
+
+<div>
+    <h1>Inserisci data per visualizzare il totale incassato per una determinata giornata dagli ordini evasi: </h1>
+    <input type="date" />
+    <div id="date">
+
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlacedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsConfirmed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Done)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                Azioni
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlacedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsConfirmed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Done)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                <form asp-action="IsDone" method="post">
+                <input type="hidden" name="id" value="@item.Id" />
+                <button type="submit" class="btn btn-primary">Evadi Ordine</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

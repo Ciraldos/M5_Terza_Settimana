@@ -6,7 +6,7 @@
 
 <h1>GetProdotti</h1>
 
-<form asp-action="AddToCart" method="post">
+
     <table class="table">
         <thead>
             <tr>
@@ -59,14 +59,17 @@
                             <span>No ingredients</span>
                         }
                     </td>
-                    <td>
-                        <input type="number" name="quantities[@item.Id]" value="1" min="1" />
-                    </td>
-                    <td>
-                        <button type="submit" name="productId" value="@item.Id" class="btn btn-primary">Add to Cart</button>
-                    </td>
+                    <form asp-action="AddToCart" method="post">
+                        <td>
+                            <input type="number" name="quantity" value="1" min="1" />
+                            <input type="hidden" name="productId" value="@item.Id" />
+                        </td>
+                       <td>
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                       </td>
+                    </form>
                 </tr>
             }
         </tbody>
     </table>
-</form>
+

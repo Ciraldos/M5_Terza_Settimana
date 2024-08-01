@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace W9_ProgettoSettimanale.Migrations
 {
     /// <inheritdoc />
-    public partial class @new : Migration
+    public partial class newm : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -100,6 +100,7 @@ namespace W9_ProgettoSettimanale.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PlacedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
+                    IsConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     Done = table.Column<bool>(type: "bit", nullable: false),
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Address = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),

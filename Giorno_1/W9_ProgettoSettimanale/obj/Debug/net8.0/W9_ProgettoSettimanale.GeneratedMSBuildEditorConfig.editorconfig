@@ -42,6 +42,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Order/CompletedOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQ29tcGxldGVkT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Order/IsDone.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcSXNEb25lLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Order/NoOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcTm9PcmRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Order/Order.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Order/Orders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/andre/Desktop/Epicode1/M5/M5_Terza_Settimana/Giorno_1/W9_ProgettoSettimanale/Views/Products/CreateProdotto.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlUHJvZG90dG8uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

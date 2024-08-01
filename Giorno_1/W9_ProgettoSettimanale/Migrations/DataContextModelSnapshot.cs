@@ -115,6 +115,9 @@ namespace W9_ProgettoSettimanale.Migrations
                     b.Property<bool>("Done")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("IsConfirmed")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Notes")
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");

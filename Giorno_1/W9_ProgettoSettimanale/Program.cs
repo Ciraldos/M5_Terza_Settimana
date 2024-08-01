@@ -38,7 +38,8 @@ namespace W9_ProgettoSettimanale
             //servizi
             builder.Services
                 .AddScoped<IProductService, ProductService>()
-                .AddScoped<IAuthService, AuthService>();
+                .AddScoped<IAuthService, AuthService>()
+                .AddScoped<IOrderService, OrderService>();
 
             var app = builder.Build();
 

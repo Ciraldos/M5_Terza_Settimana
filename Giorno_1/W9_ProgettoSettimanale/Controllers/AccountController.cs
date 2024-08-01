@@ -51,7 +51,7 @@ namespace W9_ProgettoSettimanale.Controllers
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-            return RedirectToAction("GetProdotti", "Admin");
+            return RedirectToAction("GetProdotti", "Products");
         }
 
 

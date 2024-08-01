@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using W9_ProgettoSettimanale.Context;
 using W9_ProgettoSettimanale.Models;
 using W9_ProgettoSettimanale.Services;
@@ -39,30 +40,68 @@ namespace W9_ProgettoSettimanale.Controllers
             return View(p);
         }
 
+        [HttpPost]
         public async Task<IActionResult> AddToCart(int productId, int quantity)
         {
+            var userName = User.Identity.Name;
+            var user = await _ctx.Users.FirstOrDefaultAsync(u => u.Name == userName);
+
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
+
+            // Cerca un ordine esistente per l'utente corrente che non sia ancora completato
+            var order = await _ctx.Orders
+                .Include(o => o.OrderedProducts)
+                .ThenInclude(op => op.Product)
+                .FirstOrDefaultAsync(o => o.User.Id == user.Id && !o.IsConfirmed);
+
+            if (order == null)
+            {
+                // Se non c'è un ordine esistente, ne crea uno nuovo
+                order = new Orders
+                {
+                    User = user,
+                    PlacedAt = DateTime.Now,
+                    Done = false,
+                    Address = "Indirizzo di default",
+                    IsConfirmed = false,
+                };
+
+                _ctx.Orders.Add(order);
+            }
+
             var product = await _ctx.Products.FindAsync(productId);
             if (product == null)
             {
-                return NotFound();
+                return NotFound("Product not found");
             }
 
-            var order = await GetOrCreateCurrentOrderAsync();
+            // Trova il prodotto ordinato esistente, se c'è
+            var existingOrderedProduct = order.OrderedProducts
+                .FirstOrDefault(op => op.Product.Id == productId);
 
-            var orderedProduct = new OrderedProduct
+            if (existingOrderedProduct != null)
             {
-                Order = order,
-                Product = product,
-                Quantity = quantity
-            };
+                // Se il prodotto esiste già nel carrello, aggiorna la quantità
+                existingOrderedProduct.Quantity += quantity;
+            }
+            else
+            {
+                // Altrimenti, aggiungi un nuovo prodotto ordinato
+                var orderedProduct = new OrderedProduct
+                {
+                    Order = order,
+                    Product = product,
+                    Quantity = quantity
+                };
 
-            order.OrderedProducts.Add(orderedProduct);
-            _ctx.Update(order);
+                order.OrderedProducts.Add(orderedProduct);
+            }
             await _ctx.SaveChangesAsync();
-
-            return RedirectToAction(nameof(GetProdotti));
+            return RedirectToAction("GetProdotti");
         }
-
 
     }
 }

@@ -12,6 +12,8 @@ namespace W9_ProgettoSettimanale.Models
 
         public required Users User { get; set; }
 
+        public bool IsConfirmed { get; set; }
+
         public bool Done { get; set; }
 
         [Column(TypeName = "decimal(18, 2)")]

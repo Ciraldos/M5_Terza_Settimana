@@ -23,11 +23,6 @@ namespace W9_ProgettoSettimanale.Controllers
             return View();
         }
 
-        public IActionResult OrderProduct(int id)
-        {
-
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
