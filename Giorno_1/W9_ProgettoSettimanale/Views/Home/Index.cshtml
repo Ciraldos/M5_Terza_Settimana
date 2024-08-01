@@ -1,6 +1,19 @@
-﻿@{
+﻿@using System.Security.Claims
+@{
     ViewData["Title"] = "Home Page";
+    var user = (ClaimsPrincipal)User;
+    var claims = user.Claims.ToList();
 }
+
+<h1>Welcome @User.Identity.Name</h1>
+
+<h2>Your Claims</h2>
+<ul>
+    @foreach (var claim in claims)
+    {
+        <li>@claim.Type: @claim.Value</li>
+    }
+</ul>
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>

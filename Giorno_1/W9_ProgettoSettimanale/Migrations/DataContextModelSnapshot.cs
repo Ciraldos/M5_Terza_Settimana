@@ -122,6 +122,9 @@ namespace W9_ProgettoSettimanale.Migrations
                     b.Property<DateTime>("PlacedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 

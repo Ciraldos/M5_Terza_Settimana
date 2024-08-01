@@ -14,6 +14,10 @@ namespace W9_ProgettoSettimanale.Models
 
         public bool Done { get; set; }
 
+        [Column(TypeName = "decimal(18, 2)")]
+
+        public decimal TotalAmount { get; set; }
+
         [Required]
         [StringLength(80)]
         public required string Address { get; set; }

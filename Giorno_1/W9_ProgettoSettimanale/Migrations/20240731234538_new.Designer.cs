@@ -12,8 +12,8 @@ using W9_ProgettoSettimanale.Context;
 namespace W9_ProgettoSettimanale.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240730145428_newm")]
-    partial class newm
+    [Migration("20240731234538_new")]
+    partial class @new
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -124,6 +124,9 @@ namespace W9_ProgettoSettimanale.Migrations
 
                     b.Property<DateTime>("PlacedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(18, 2)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
