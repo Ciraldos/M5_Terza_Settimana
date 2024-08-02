@@ -1,91 +1,62 @@
 ﻿@model IEnumerable<W9_ProgettoSettimanale.Models.Orders>
 
 @{
-    ViewData["Title"] = "IsDone";
+    ViewData["Title"] = "Evasione Ordini";
 }
 
-<h1>Evasione Ordini</h1>
-
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Id. Ordine
-            </th>
-            <th>
-                Data Ordine
-            </th>
-            <th>
-                Confermato
-            </th>
-            <th>
-                Evaso
-            </th>
-            <th>
-                Prezzo Totale Ordine
-            </th>
-            <th>
-                Indirizzo Spedizione
-            </th>
-            <th>
-                Note Aggiuntive
-            </th>
-            <th>
-                Azioni
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                #@item.Id
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlacedAt)
-            </td>
-                @if (@item.IsConfirmed)
-                {
+<div class="container mt-5">
+    <h1 class="mb-4">Evasione Ordini</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id. Ordine</th>
+                <th>Data Ordine</th>
+                <th>Confermato</th>
+                <th>Evaso</th>
+                <th>Prezzo Totale Ordine</th>
+                <th>Indirizzo Spedizione</th>
+                <th>Note Aggiuntive</th>
+                <th>Azioni</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>#@item.Id</td>
+                    <td>@Html.DisplayFor(modelItem => item.PlacedAt)</td>
                     <td>
-                        <span class="badge bg-success p-2">Si</span>
+                        @if (item.IsConfirmed)
+                        {
+                            <span class="badge bg-success p-2">Si</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger p-2">No</span>
+                        }
                     </td>
-                }
-                else
-                {
                     <td>
-                        <span class="badge bg-danger p-2">No</span>
+                        @if (item.Done)
+                        {
+                            <span class="badge bg-success p-2">Si</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-danger p-2">No</span>
+                        }
                     </td>
-                }
-                @if (@item.Done)
-                {
+                    <td>€@Html.DisplayFor(modelItem => item.TotalAmount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Address)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Notes)</td>
                     <td>
-                        <span class="badge bg-success p-2">Si</span>
+                        <form asp-action="IsDone" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="@item.Id" />
+                            <button type="submit" class="btn btn-primary">Evadi Ordine</button>
+                        </form>
                     </td>
-                }
-                else
-                {
-                    <td>
-                        <span class="badge bg-danger p-2">No</span>
-                    </td>
-                }
-            <td>
-                    €@Html.DisplayFor(modelItem => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-            </td>
-            <td>
-                <form asp-action="IsDone" method="post">
-                @Html.AntiForgeryToken()
-                <input type="hidden" name="id" value="@item.Id" />
-                <button type="submit" class="btn btn-primary">Evadi Ordine</button>
-                </form>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

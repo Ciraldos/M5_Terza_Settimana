@@ -5,52 +5,65 @@
     var allIngredients = ViewBag.AllIngredients as List<Ingredients>;
 }
 
-<h1>Crea Prodotto</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CreateProdotto" asp-controller="Products" method="post">
-            @Html.AntiForgeryToken()
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Products.Name" class="control-label">Inserisci Nome Prodotto:</label>
-                <input asp-for="Products.Name" class="form-control" />
-                <span asp-validation-for="Products.Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Products.Price" class="control-label">Inserisci Prezzo:</label>
-                <input asp-for="Products.Price" class="form-control" />
-                <span asp-validation-for="Products.Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Products.Photo" class="control-label">Inserisci Link Foto:</label>
-                <input asp-for="Products.Photo" class="form-control" />
-                <span asp-validation-for="Products.Photo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Products.DeliveryTimeInMinutes" class="control-label">Inserisci Tempo Spedizione:</label>
-                <input asp-for="Products.DeliveryTimeInMinutes" class="form-control" />
-                <span asp-validation-for="Products.DeliveryTimeInMinutes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label class="control-label">Ingredients</label>
-                <div>
-                    @foreach (var ingredient in allIngredients)
-                    {
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="SelectedIngredients" value="@ingredient.Id" />
-                                @ingredient.Name
-                            </label>
-                        </div>
-                    }
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h3 class="card-title">Crea Prodotto</h3>
                 </div>
-                <span asp-validation-for="SelectedIngredients" class="text-danger"></span>
+                <div class="card-body">
+                    <form asp-action="CreateProdotto" asp-controller="Products" method="post">
+                        @Html.AntiForgeryToken()
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Products.Name" class="form-label">Nome Prodotto</label>
+                            <input asp-for="Products.Name" class="form-control" placeholder="Inserisci nome prodotto" />
+                            <span asp-validation-for="Products.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Products.Price" class="form-label">Prezzo</label>
+                            <input asp-for="Products.Price" class="form-control" placeholder="Inserisci prezzo" />
+                            <span asp-validation-for="Products.Price" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Products.Photo" class="form-label">URL Foto</label>
+                            <input asp-for="Products.Photo" class="form-control" placeholder="Inserisci URL foto" />
+                            <span asp-validation-for="Products.Photo" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Products.DeliveryTimeInMinutes" class="form-label">Tempo di Spedizione (in minuti)</label>
+                            <input asp-for="Products.DeliveryTimeInMinutes" class="form-control" placeholder="Inserisci tempo di spedizione" />
+                            <span asp-validation-for="Products.DeliveryTimeInMinutes" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                                <label class="form-label">Ingredienti</label>
+                                <div class="border p-2" style="max-height: 200px; overflow-y: auto;">
+                                    @foreach (var ingredient in allIngredients)
+                                    {
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="SelectedIngredients" value="@ingredient.Id" />
+                                            <label class="form-check-label">
+                                                @ingredient.Name
+                                            </label>
+                                        </div>
+                                    }
+                                </div>
+                                <span asp-validation-for="SelectedIngredients" class="text-danger"></span>
+                            </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-info text-white">Crea</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
