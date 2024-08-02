@@ -5,24 +5,19 @@
     var claims = user.Claims.ToList();
 }
 
-<div class="container">
-    <section id="home" class="hero">
-        
+<div class="container mt-5">
+    <section id="home" class="text-center py-5 rounded">
         @if (User.Identity.IsAuthenticated)
-        {    
-            <h2>Bentornato @User.Identity.Name!</h2>
-            <p>Vai al catalogo dei prodotti!</p>
-            <a class="btn btn-warning" asp-action="GetProdotti" asp-controller="Products">Vai a prodotti</a>
+        {
+            <h2 class="display-4 ">Bentornato @User.Identity.Name!</h2>
+            <p class="lead">Vai al catalogo dei prodotti!</p>
+            <a class="btn btn-info text-white btn-lg mt-3" asp-action="GetProdotti" asp-controller="Products">Lista Prodotti</a>
         }
-        
         else
         {
-            <h2>Benvenuti su Delizie da Gustare</h2>
-            <p>Scopri i nostri prodotti alimentari di alta qualità, pronti per essere gustati.</p>
-            <a class="btn btn-warning" asp-action="Login" asp-controller="Account">Accedi</a>
-
+            <h2 class="display-4">Benvenuti su Delizie da Gustare</h2>
+            <p class="lead">Scopri i nostri prodotti alimentari di alta qualità, pronti per essere gustati.</p>
+            <a class="btn btn-info text-white btn-lg mt-3" asp-action="Login" asp-controller="Account">Accedi</a>
         }
-
     </section>
-    
 </div>
