@@ -20,6 +20,7 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [Authorize(Policy = "AdminPolicy")]
+
         public async Task<IActionResult> Orders()
         {
             var ordini = await _ctx.Orders.Include(o => o.User).ToListAsync();
@@ -114,6 +115,8 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminPolicy")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteOrdine(int id)
         {
             var order = await _ctx.Orders.FindAsync(id);
@@ -122,6 +125,7 @@ namespace W9_ProgettoSettimanale.Controllers
             return RedirectToAction("Orders");
         }
 
+        [Authorize(Policy = "AdminPolicy")]
 
         public async Task<IActionResult> IsDone()
         {
@@ -130,6 +134,7 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = "AdminPolicy")]
         [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> IsDone(int id)
@@ -146,6 +151,8 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "AdminPolicy")]
+
         public async Task<IActionResult> Count()
         {
             var c = await _ctx.Orders.CountAsync(o => o.Done == true);
@@ -153,6 +160,8 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = "AdminPolicy")]
+
         public async Task<IActionResult> AmountFromDay(DateTime date)
         {
             var total = await _ctx.Orders

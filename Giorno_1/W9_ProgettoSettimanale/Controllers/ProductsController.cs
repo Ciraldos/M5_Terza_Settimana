@@ -19,6 +19,7 @@ namespace W9_ProgettoSettimanale.Controllers
             _productService = productService;
         }
 
+        [Authorize(Policy = "AdminPolicy")]
         public IActionResult CreateProdotto()
         {
             ViewBag.AllIngredients = _ctx.Ingredients.ToList();
@@ -28,6 +29,8 @@ namespace W9_ProgettoSettimanale.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "AdminPolicy")]
+
         public async Task<IActionResult> CreateProdotto(ProductsViewModel p)
         {
             await _productService.CreateProductAsync(p);

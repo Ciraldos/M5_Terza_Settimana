@@ -5,17 +5,24 @@
     var claims = user.Claims.ToList();
 }
 
-<h1>Welcome @User.Identity.Name</h1>
+<div class="container">
+    <section id="home" class="hero">
+        
+        @if (User.Identity.IsAuthenticated)
+        {    
+            <h2>Bentornato @User.Identity.Name!</h2>
+            <p>Vai al catalogo dei prodotti!</p>
+            <a class="btn btn-warning" asp-action="GetProdotti" asp-controller="Products">Vai a prodotti</a>
+        }
+        
+        else
+        {
+            <h2>Benvenuti su Delizie da Gustare</h2>
+            <p>Scopri i nostri prodotti alimentari di alta qualità, pronti per essere gustati.</p>
+            <a class="btn btn-warning" asp-action="Login" asp-controller="Account">Accedi</a>
 
-<h2>Your Claims</h2>
-<ul>
-    @foreach (var claim in claims)
-    {
-        <li>@claim.Type: @claim.Value</li>
-    }
-</ul>
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    </section>
+    
 </div>

@@ -20,32 +20,41 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
 
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if
+                                (User.IsInRole("Admin")){
+                                    
+                                        <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="CreateProdotto">Crea Prodotto</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="IsDone">Evadi Ordine</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Orders">Lista Ordini</a>
+                                    </li>
+                                        }
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="CreateProdotto">Crea Prodotto</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="GetProdotti">Lista Prodotti</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="GetProdotti">Prodotto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Register">Registrati</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                        </li>
+                        
+                        
                         <li class="nav-item d-flex align-items-center">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Order">Carrello</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Order">Ordine</a>
                             <span id="numProducts" class="badge bg-danger"></span>
 
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="IsDone">Evadi Ordine</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="Orders">Lista Ordini</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {   
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Accedi</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
