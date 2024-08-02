@@ -5,9 +5,7 @@
     var allIngredients = ViewBag.AllIngredients as List<Ingredients>;
 }
 
-<h1>CreateProdotto</h1>
-
-<h4>Product</h4>
+<h1>Crea Prodotto</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,22 +13,22 @@
             @Html.AntiForgeryToken()
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Products.Name" class="control-label"></label>
+                <label asp-for="Products.Name" class="control-label">Inserisci Nome Prodotto:</label>
                 <input asp-for="Products.Name" class="form-control" />
                 <span asp-validation-for="Products.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Products.Price" class="control-label"></label>
+                <label asp-for="Products.Price" class="control-label">Inserisci Prezzo:</label>
                 <input asp-for="Products.Price" class="form-control" />
                 <span asp-validation-for="Products.Price" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Products.Photo" class="control-label"></label>
+                <label asp-for="Products.Photo" class="control-label">Inserisci Link Foto:</label>
                 <input asp-for="Products.Photo" class="form-control" />
                 <span asp-validation-for="Products.Photo" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Products.DeliveryTimeInMinutes" class="control-label"></label>
+                <label asp-for="Products.DeliveryTimeInMinutes" class="control-label">Inserisci Tempo Spedizione:</label>
                 <input asp-for="Products.DeliveryTimeInMinutes" class="form-control" />
                 <span asp-validation-for="Products.DeliveryTimeInMinutes" class="text-danger"></span>
             </div>
@@ -54,10 +52,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

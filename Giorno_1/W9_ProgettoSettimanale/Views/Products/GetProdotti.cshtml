@@ -4,28 +4,31 @@
     ViewData["Title"] = "GetProdotti";
 }
 
-<h1>GetProdotti</h1>
+<h1>Lista Prodotti</h1>
 
 
     <table class="table">
         <thead>
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Name)
+                    Nome
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Price)
+                    Prezzo
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Photo)
+                    Immagine
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DeliveryTimeInMinutes)
+                    Tempo Spedizione
                 </th>
                 <th>
-                    @Html.DisplayName("Ingredients")
+                    Ingredienti
                 </th>
                 <th>Quantità</th>
+                <th>
+                    Azioni
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -42,7 +45,7 @@
                         <img src="@item.Photo" alt="Product Photo" />
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.DeliveryTimeInMinutes)
+                        @Html.DisplayFor(modelItem => item.DeliveryTimeInMinutes) min.
                     </td>
                     <td>
                         @if (item.Ingredients != null && item.Ingredients.Any())
@@ -65,7 +68,7 @@
                             <input type="hidden" name="productId" value="@item.Id" />
                         </td>
                        <td>
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            <button type="submit" class="btn btn-primary">Aggiungi All'Ordine</button>
                        </td>
                     </form>
                 </tr>

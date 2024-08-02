@@ -101,6 +101,16 @@ namespace W9_ProgettoSettimanale.Controllers
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteOrdine(int id)
+        {
+            var order = await _ctx.Orders.FindAsync(id);
+            _ctx.Orders.Remove(order);
+            await _ctx.SaveChangesAsync();
+            return RedirectToAction("Orders");
+        }
+
+
         public async Task<IActionResult> IsDone()
         {
             var ordini = await _ctx.Orders.Where(o => o.Done == false).ToListAsync();

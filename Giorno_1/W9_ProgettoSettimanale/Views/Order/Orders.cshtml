@@ -4,31 +4,34 @@
     ViewData["Title"] = "Order";
 }
 
-<h1>Order</h1>
+<h1>Lista Ordini</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PlacedAt)
+                Id. Ordine
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Done)
+                Data Ordine
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TotalAmount)
+                Evaso
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Address)
+                Prezzo Totale Ordine
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Notes)
+               Indirizzo Spedizione
             </th>
             <th>
-                User
+                Note Aggiuntive
+            </th>
+            <th>
+                Utente
+            </th>
+            <th>
+                Azioni
             </th>
         </tr>
     </thead>
@@ -36,13 +39,21 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                #@item.Id
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PlacedAt)
             </td>
+                @if (@item.Done)
+                {
+                    <td>Si</td>
+                }
+                else
+                {
+                    <td>No</td>
+                }
             <td>
-                @Html.DisplayFor(modelItem => item.Done)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalAmount)
+                    €@Html.DisplayFor(modelItem => item.TotalAmount)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Address)
@@ -54,9 +65,11 @@
                 @item.User.Name
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <form asp-action="DeleteOrdine" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" name="id" value="@item.Id"/>
+                    <button type="submit" class="btn btn-danger">Elimina Ordine</button>
+                </form>
             </td>
         </tr>
 }

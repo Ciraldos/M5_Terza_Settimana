@@ -23,8 +23,8 @@ namespace W9_ProgettoSettimanale.Services
 
         public async Task<Users> Register(Users user)
         {
-
-            var roles = await _ctx.Roles.Where(r => r.Id == 2).FirstOrDefaultAsync();
+            // Secondo le mie tabelle, impostando a 1, l'utente verra registrato come admin. Se si vuole impostarlo con il ruolo di user, impostarlo a 2.
+            var roles = await _ctx.Roles.Where(r => r.Id == 1).FirstOrDefaultAsync();
             user.Roles.Add(roles);
             await _ctx.Users.AddAsync(user);
             await _ctx.SaveChangesAsync();
