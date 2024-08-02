@@ -51,7 +51,6 @@ namespace W9_ProgettoSettimanale.Controllers
                 return NotFound("User not found");
             }
 
-            // Cerca un ordine esistente per l'utente corrente che non sia ancora completato
             var order = await _ctx.Orders
                 .Include(o => o.OrderedProducts)
                 .ThenInclude(op => op.Product)
@@ -59,7 +58,6 @@ namespace W9_ProgettoSettimanale.Controllers
 
             if (order == null)
             {
-                // Se non c'è un ordine esistente, ne crea uno nuovo
                 order = new Orders
                 {
                     User = user,
@@ -84,12 +82,12 @@ namespace W9_ProgettoSettimanale.Controllers
 
             if (existingOrderedProduct != null)
             {
-                // Se il prodotto esiste già nel carrello, aggiorna la quantità
+                // Se il prodotto esiste nel carrello aggiorna la quantità
                 existingOrderedProduct.Quantity += quantity;
             }
             else
             {
-                // Altrimenti, aggiungi un nuovo prodotto ordinato
+                // Altrimenti aggiungi un nuovo prodotto ordinato
                 var orderedProduct = new OrderedProduct
                 {
                     Order = order,

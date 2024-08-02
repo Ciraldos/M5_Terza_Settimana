@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("W9_ProgettoSettimanale")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f0e42c9c028364e239f905afdc559cbdabdb42f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1b92266a3653198c0a3b96a126cda999c354fea4")]
 [assembly: System.Reflection.AssemblyProductAttribute("W9_ProgettoSettimanale")]
 [assembly: System.Reflection.AssemblyTitleAttribute("W9_ProgettoSettimanale")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -22,6 +22,10 @@ namespace W9_ProgettoSettimanale.Controllers
         {
             var userName = User.Identity.Name;
             var user = await _ctx.Users.FirstOrDefaultAsync(u => u.Name == userName);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
             var ordini = await _ctx.Orders.Include(o => o.OrderedProducts).ThenInclude(p => p.Product).Where(o => o.User == user && !o.Done).ToListAsync();
             return View(ordini);
         }
@@ -127,10 +131,12 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> AmountFromDay()
+        public async Task<IActionResult> AmountFromDay(DateTime date)
         {
-            var c = await _ctx.Orders.CountAsync(o => o.Done == true);
-            return Ok(c);
+            var total = await _ctx.Orders
+                                  .Where(o => o.Done == true && o.PlacedAt.Date == date.Date)
+                                  .SumAsync(o => o.TotalAmount);
+            return Ok(total);
         }
         public IActionResult CompletedOrder()
         {
