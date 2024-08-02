@@ -42,7 +42,7 @@ function getNumProducts() {
         url: numPath,
         method: 'GET',
         success: (data) => {
-            let span = $('#numProducts');
+            let span = $('#numProduct');
             span.text(`${data}`);
         },
         error: (err) => {

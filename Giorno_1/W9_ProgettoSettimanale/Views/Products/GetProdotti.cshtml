@@ -43,15 +43,20 @@
                             <span>Nessun ingrediente</span>
                         }
                     </td>
-                    <td>
-                        <input type="number" name="quantity" value="1" min="1" class="form-control mb-2" />
-                    </td>
-                    <td>
-                        <form asp-action="AddToCart" method="post">
+                    
+                    
+                    <form asp-action="AddToCart" method="post">
+                        <td>
+
+                             <input type="number" name="quantity" value="1" min="1" class="form-control mb-2" />
                             <input type="hidden" name="productId" value="@item.Id" />
+                        </td>
+                        <td>
+
                             <button type="submit" class="btn btn-info text-white">Aggiungi All'Ordine</button>
+                        </td>
                         </form>
-                    </td>
+                    
                 </tr>
             }
         </tbody>
