@@ -6,8 +6,9 @@
 
 <div class="container mt-5">
     <h1 class="mb-4">Evasione Ordini</h1>
+
     <table class="table table-striped">
-        <thead>
+        <thead class="bg-info text-white">
             <tr>
                 <th>Id. Ordine</th>
                 <th>Data Ordine</th>
@@ -49,10 +50,10 @@
                     <td>@Html.DisplayFor(modelItem => item.Address)</td>
                     <td>@Html.DisplayFor(modelItem => item.Notes)</td>
                     <td>
-                        <form asp-action="IsDone" method="post">
+                        <form asp-action="IsDone" method="post" class="d-inline">
                             @Html.AntiForgeryToken()
                             <input type="hidden" name="id" value="@item.Id" />
-                            <button type="submit" class="btn btn-primary">Evadi Ordine</button>
+                            <button type="submit" class="btn btn-info text-white">Evadi Ordine</button>
                         </form>
                     </td>
                 </tr>

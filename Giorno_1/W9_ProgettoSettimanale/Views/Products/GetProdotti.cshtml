@@ -4,53 +4,34 @@
     ViewData["Title"] = "GetProdotti";
 }
 
-<h1>Lista Prodotti</h1>
-
-
-    <table class="table">
-        <thead>
+<div class="container mt-5">
+    <h1 class="mb-4">Lista Prodotti</h1>
+    <table class="table table-striped">
+        <thead class="bg-info text-white">
             <tr>
-                <th>
-                    Nome
-                </th>
-                <th>
-                    Prezzo
-                </th>
-                <th>
-                    Immagine
-                </th>
-                <th>
-                    Tempo Spedizione
-                </th>
-                <th>
-                    Ingredienti
-                </th>
+                <th>Nome</th>
+                <th>Prezzo</th>
+                <th>Immagine</th>
+                <th>Tempo Spedizione</th>
+                <th>Ingredienti</th>
                 <th>Quantità</th>
-                <th>
-                    Azioni
-                </th>
+                <th>Azioni</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>€@Html.DisplayFor(modelItem => item.Price)</td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Name)
+                        <img src="@item.Photo" alt="Product Photo" class="img-thumbnail" style="max-width: 100px;" />
                     </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Price)
-                    </td>
-                    <td>
-                        <img src="@item.Photo" alt="Product Photo" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.DeliveryTimeInMinutes) min.
-                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.DeliveryTimeInMinutes) min.</td>
                     <td>
                         @if (item.Ingredients != null && item.Ingredients.Any())
                         {
-                            <ul>
+                            <ul class="list-unstyled">
                                 @foreach (var ingredient in item.Ingredients)
                                 {
                                     <li>@ingredient.Name</li>
@@ -59,20 +40,21 @@
                         }
                         else
                         {
-                            <span>No ingredients</span>
+                            <span>Nessun ingrediente</span>
                         }
                     </td>
-                    <form asp-action="AddToCart" method="post">
-                        <td>
-                            <input type="number" name="quantity" value="1" min="1" />
+                    <td>
+                        <input type="number" name="quantity" value="1" min="1" class="form-control mb-2" />
+                    </td>
+                    <td>
+                        <form asp-action="AddToCart" method="post">
                             <input type="hidden" name="productId" value="@item.Id" />
-                        </td>
-                       <td>
-                    <button type="submit" class="btn btn-warning">Aggiungi All'Ordine</button>
-                       </td>
-                    </form>
+                            <button type="submit" class="btn btn-info text-white">Aggiungi All'Ordine</button>
+                        </form>
+                    </td>
                 </tr>
             }
         </tbody>
     </table>
+</div>
 

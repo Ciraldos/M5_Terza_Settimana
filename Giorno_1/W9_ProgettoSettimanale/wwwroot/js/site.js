@@ -46,7 +46,7 @@ function getNumProducts() {
             span.text(`${data}`);
         },
         error: (err) => {
-            console.error("Errore", err);
+            console.error("Errore nella chiamata AJAX:", err);
         }
     });
 }
@@ -62,4 +62,4 @@ $('#CountFromDateBtn').on('click', () => {
 
 $(document).ready(() => {
     getNumProducts();
-})
+});
