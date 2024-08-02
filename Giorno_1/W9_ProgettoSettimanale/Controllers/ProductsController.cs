@@ -26,6 +26,7 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProdotto(ProductsViewModel p)
         {
             await _productService.CreateProductAsync(p);
@@ -33,7 +34,6 @@ namespace W9_ProgettoSettimanale.Controllers
 
         }
 
-        [Authorize(Policy = "AdminPolicy")]
         public async Task<IActionResult> GetProdotti()
         {
             var p = await _productService.GetProductsAsync();
@@ -41,6 +41,7 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddToCart(int productId, int quantity)
         {
             var userName = User.Identity.Name;

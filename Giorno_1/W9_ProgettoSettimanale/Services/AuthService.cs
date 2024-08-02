@@ -16,7 +16,7 @@ namespace W9_ProgettoSettimanale.Services
         public async Task<Users> Login(Users user)
         {
 
-            var u = await _ctx.Users.Include(u => u.Roles).Where(u => u.Name == user.Name && u.Email == user.Email && u.Password == user.Password).FirstOrDefaultAsync();
+            var u = await _ctx.Users.Include(u => u.Roles).Where(u => u.Name == user.Name && u.Password == user.Password).FirstOrDefaultAsync();
 
             return u;
         }

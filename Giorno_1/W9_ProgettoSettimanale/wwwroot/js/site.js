@@ -18,9 +18,9 @@ function countOrders() {
 
     });
 }
-
 function countFromDate() {
     let date = $('#dateInput').val(); 
+    $.ajax({
         url: `${datePath}?date=${date}`, 
         method: 'GET',
         success: (data) => {
@@ -34,6 +34,7 @@ function countFromDate() {
         }
     });
 }
+
 
 $('#CountBtn').on('click', () => {
     countOrders();

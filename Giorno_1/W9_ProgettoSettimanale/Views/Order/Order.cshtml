@@ -33,6 +33,7 @@
 </table>
 
 <form asp-action="CompleteOrder" method="post">
+    @Html.AntiForgeryToken()
     <div class="form-group">
         <label for="ShippingAddress">Indirizzo di Spedizione</label>
         <input type="text" class="form-control" id="ShippingAddress" name="ShippingAddress" value="@Model.ShippingAddress" required />

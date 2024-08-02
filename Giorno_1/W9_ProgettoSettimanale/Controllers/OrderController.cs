@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using W9_ProgettoSettimanale.Context;
 using W9_ProgettoSettimanale.Models;
@@ -18,15 +19,10 @@ namespace W9_ProgettoSettimanale.Controllers
 
         }
 
+        [Authorize(Policy = "AdminPolicy")]
         public async Task<IActionResult> Orders()
         {
-            var userName = User.Identity.Name;
-            var user = await _ctx.Users.FirstOrDefaultAsync(u => u.Name == userName);
-            if (user == null)
-            {
-                return NotFound("User not found");
-            }
-            var ordini = await _ctx.Orders.Include(o => o.OrderedProducts).ThenInclude(p => p.Product).Where(o => o.User == user && !o.Done).ToListAsync();
+            var ordini = await _ctx.Orders.Include(o => o.User).ToListAsync();
             return View(ordini);
         }
 
@@ -68,6 +64,8 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> CompleteOrder(OrderViewModel model)
         {
             var userName = User.Identity.Name;
@@ -110,6 +108,8 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> IsDone(int id)
         {
             var order = await _ctx.Orders.FindAsync(id);

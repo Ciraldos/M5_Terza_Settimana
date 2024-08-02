@@ -66,6 +66,7 @@
             </td>
             <td>
                 <form asp-action="IsDone" method="post">
+                @Html.AntiForgeryToken()
                 <input type="hidden" name="id" value="@item.Id" />
                 <button type="submit" class="btn btn-primary">Evadi Ordine</button>
                 </form>

@@ -20,6 +20,8 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Register(Users u)
         {
             await _authService.Register(u);
@@ -32,6 +34,8 @@ namespace W9_ProgettoSettimanale.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
+
         public async Task<IActionResult> Login(Users u)
         {
             var user = await _authService.Login(u);
