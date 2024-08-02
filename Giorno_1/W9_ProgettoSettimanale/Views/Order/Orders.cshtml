@@ -6,6 +6,24 @@
 
 <h1>Lista Ordini</h1>
 
+<div class="mt-4">
+    <div class="d-flex align-items-center">
+        <h5>Clicca qui per vedere il numero totale di ordini evasi:</h5>
+        <button id="CountBtn" class="btn btn-primary ms-3">Tot. Evasi</button>
+    </div>
+    <div id="num"></div>
+</div>
+
+<div class="d-flex align-items-center my-4">
+    <h5>Inserisci la data per visualizzare il totale incassato per una determinata giornata dagli ordini evasi: </h5>
+    <div class="d-flex">
+        <input type="date" id="dateInput" class="ms-3" />
+        <button id="CountFromDateBtn" class="btn btn-primary ms-3">Tot. Evasi</button>
+    </div>
+
+</div>
+<div id="date">
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -46,11 +64,15 @@
             </td>
                 @if (@item.Done)
                 {
-                    <td>Si</td>
+                    <td>
+                        <span class="badge bg-success p-2">Si</span>
+                    </td>
                 }
                 else
                 {
-                    <td>No</td>
+                    <td>
+                        <span class="badge bg-danger p-2">No</span>
+                    </td>
                 }
             <td>
                     €@Html.DisplayFor(modelItem => item.TotalAmount)

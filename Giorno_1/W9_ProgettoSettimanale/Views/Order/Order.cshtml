@@ -16,16 +16,16 @@
         {
             <tr>
                 <td>@item.ProductName</td>
-                <td>@item.ProductPrice</td>
+                <td>€@item.ProductPrice</td>
                 <td>@item.Quantity</td>
-                <td>@(item.ProductPrice * item.Quantity)</td>
+                <td>€@(item.ProductPrice * item.Quantity)</td>
             </tr>
         }
     </tbody>
     <tfoot>
         <tr>
             <td colspan="3">Costo Totale</td>
-            <td>@Model.TotalAmount</td>
+            <td>€@Model.TotalAmount</td>
             <td><input type="hidden" name="TotalAmount" value="@Model.TotalAmount" /></td>
 
         </tr>
@@ -42,5 +42,5 @@
         <label for="Notes">Note</label>
         <textarea class="form-control" id="Notes" name="Notes">@Model.Notes</textarea>
     </div>
-    <button type="submit" class="btn btn-primary">Concludi Ordine</button>
+    <button type="submit" class="btn btn-primary mt-2">Concludi Ordine</button>
 </form>

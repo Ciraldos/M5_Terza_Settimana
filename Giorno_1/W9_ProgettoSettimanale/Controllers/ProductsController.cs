@@ -65,7 +65,7 @@ namespace W9_ProgettoSettimanale.Controllers
                     User = user,
                     PlacedAt = DateTime.Now,
                     Done = false,
-                    Address = "Indirizzo di default",
+                    Address = "",
                     IsConfirmed = false,
                 };
 

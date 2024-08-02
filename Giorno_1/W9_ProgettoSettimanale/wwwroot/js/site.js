@@ -1,6 +1,8 @@
 ﻿
 let basePath = "/Order/Count"
 let datePath = "/Order/AmountFromDay"
+let numPath = "/Order/GetNumbersProductFromOrders"
+
 
 function countOrders() {
     $.ajax({
@@ -9,7 +11,7 @@ function countOrders() {
         success: (data) => {
             let div = $('#num')
             div.empty();
-            let num = $(`<h1 class="display-5">Numero Ordini Evasi: ${(data)}</h1>`);
+            let num = $(`<h1>Numero Ordini Evasi:<br><span class="text-danger"> ${(data)}</span></h1>`);
             div.append(num);
         },
         error: (err) => {
@@ -26,11 +28,25 @@ function countFromDate() {
         success: (data) => {
             let div = $('#date');
             div.empty();
-            let total = $(`<h1 class="display-5">Totale degli incassi degli ordini evasi per il giorno ${date}: €${data}</h1>`);
+            let total = $(`<h1 class="mb-4">Totale degli incassi degli ordini evasi per il giorno ${date}:<br> <span class="text-danger">€${data}</span></h1>`);
             div.append(total);
         },
         error: (err) => {
             console.log("Errore", err);
+        }
+    });
+}
+
+function getNumProducts() {
+    $.ajax({
+        url: numPath,
+        method: 'GET',
+        success: (data) => {
+            let span = $('#numProducts');
+            span.text(`${data}`);
+        },
+        error: (err) => {
+            console.error("Errore", err);
         }
     });
 }
@@ -42,4 +58,8 @@ $('#CountBtn').on('click', () => {
 
 $('#CountFromDateBtn').on('click', () => {
     countFromDate();
+})
+
+$(document).ready(() => {
+    getNumProducts();
 })

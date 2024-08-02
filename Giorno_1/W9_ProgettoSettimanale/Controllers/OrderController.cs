@@ -63,6 +63,18 @@ namespace W9_ProgettoSettimanale.Controllers
             return View(viewModel);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetNumbersProductFromOrders()
+        {
+            var userName = User.Identity.Name;
+            var user = await _ctx.Users.FirstOrDefaultAsync(u => u.Name == userName);
+
+            var totalProducts = await _ctx.Orders
+                                  .Where(o => o.User.Id == user.Id && !o.IsConfirmed)
+                                  .SelectMany(o => o.OrderedProducts).SumAsync(o => o.Quantity);
+            return Ok(totalProducts);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
 
